@@ -15,7 +15,7 @@
         </ul>
     </nav>
     </div>
-    <h1>Wecome -------usename</h1>
+    <h1>Welcome {{ $username }}</h1>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt harum dignissimos, dolor inventore suscipit, nisi architecto eligendi saepe aliquid omnis ullam facere ut at nesciunt distinctio rerum nemo dolores illo!</p>
 

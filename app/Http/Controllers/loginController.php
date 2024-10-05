@@ -15,6 +15,7 @@ class loginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+            
         ]);
 
         // Attempt to log the user in
@@ -22,7 +23,8 @@ class loginController extends Controller
             // Authentication passed
             $request->session()->regenerate();
 
-            return redirect()->intended('/DashBoard');
+           
+            return redirect()->intended('/DashBoard' );
             // return redirect('/DashBoard');
         }
 
@@ -36,9 +38,7 @@ class loginController extends Controller
     {
         Auth::logout();
 
-        // $request->session()->invalidate();
 
-        // $request->session()->regenerateToken();
 
         return redirect('/login');
     }

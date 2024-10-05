@@ -22,18 +22,14 @@ class RegisterController extends Controller
             'password' => 'required',
             ]);
 
-        User::create([
+        $user = User::create([
             "username" => $request->username,
             "Sudent_ID"=>$request->Sudent_ID,
             "email" => $request->email,
             "password" => $request->password,
         ]);
-           
-            //dd($user);
-             //Auth::login($user);
-        return redirect('/login');
-        
-
+        $username = $user['username'];
+        return view('Frontend.dashboard', ['username' => $username]);
         
     }
 }

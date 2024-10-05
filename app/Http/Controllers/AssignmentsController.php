@@ -29,7 +29,7 @@ class AssignmentsController extends Controller
            
             //dd($user);
              //Auth::login($user);
-        return redirect('/login');
+        //return redirect('/login');
         
 
         
