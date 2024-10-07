@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
-    public function  logs(){
+    public function logs()
+    {
         return view('Frontend.login');
     }
     public function store(Request $request)
@@ -15,7 +16,6 @@ class loginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
-            
         ]);
 
         // Attempt to log the user in
@@ -23,26 +23,24 @@ class loginController extends Controller
             // Authentication passed
             $request->session()->regenerate();
 
-           
-            return redirect()->intended('/DashBoard' );
-            // return redirect('/DashBoard');
+            // Fetch current user and get the username
+            $username = Auth::user()->username;
+
+            // Pass the variable into the view to display username
+            return view('Frontend.dashboard', ['username' => $username]);
         }
 
         // Authentication failed
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    
+        return back()
+            ->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])
+            ->onlyInput('email');
     }
     public function logout(Request $request)
     {
         Auth::logout();
 
-
-
         return redirect('/login');
     }
-
-    
-    
 }
